@@ -16,7 +16,8 @@ end
 
 bot = ComplimentBot.new
 
-sleep(ARGV.length > 0 ? ARGV[0].to_i : 0)
+# unless the command-line specifies otherwise, wait before posting
+sleep(ARGV.length > 0 ? ARGV[0].to_i : polite_time_period)
 
 while true
   client.create_status(bot.compliment)
