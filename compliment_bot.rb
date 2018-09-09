@@ -3,8 +3,13 @@ require 'bundler/setup'
 
 require 'mastodon'
 
-BEARER_TOKEN = ENV['CB_BEARER_TOKEN']
-client = Mastodon::REST::Client.new(base_url: "https://botsin.space", bearer_token: BEARER_TOKEN)
+require './dummy-client'
+
+if BEARER_TOKEN = ENV['CB_BEARER_TOKEN']
+  client = Mastodon::REST::Client.new(base_url: "https://botsin.space", bearer_token: BEARER_TOKEN)
+else
+  client = DummyClient.new
+end
 
 class ComplimentBot
   def initialize
