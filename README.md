@@ -15,3 +15,6 @@ the 11-year-old requests emoji support
 
 add a plural-noun style of compliment, so we can say things like "your
   principles are super"
+
+read words from files so we can reload the vocabulary without restarting
+    the bot
