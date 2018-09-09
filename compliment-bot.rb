@@ -17,12 +17,13 @@ class ComplimentBot
       "charming", "creative", "cool", "delightful", "decisive", "distinguished",
       "elegant", "epic", "ethical", "exquisite", "excellent", "exceptional",
       "friendly", "fun", "gracious", "harmonious", "hilarious",
-      "ideal", "immaculate", "incisive", "inclusive", "inimitable",
-      "kind", "lively", "lovely", "fetching", "fresh",
-      "majestic", "my favorite", "nifty",
+      "ideal", "immaculate", "incisive", "inclusive", "inimitable", "interstellar",
+      "kind", "lively", "lovely", "fetching", "fresh", "grand",
+      "majestic", "nifty",
       "pleasant", "polished", "pure", "refined", "realiable", "respectful",
       "smooth", "soothing", "solid", "sparkly",
-      "spectacular", "spirited", "striking", "stunning", "super", "superb",
+      "spectacular", "spirited", "striking", "stunning", "stylish",
+      "super", "superb",
       "unique", "vibrant", "warm", "well-maintained", "wonderful", "wondrous"
       ]
       @intensifiers = ["so ", "so ", "so ", "just ", "just ",
@@ -34,7 +35,9 @@ class ComplimentBot
     self.public_send(['your_adj_noun_c',
       'you_are_adj_c',
       'love_how_you_are_c',
-      'you_are_like_c'].sample)
+      'you_are_like_c',
+      'you_are_my_fave_c',
+      ].sample)
   end
 
   def your_adj_noun_c
@@ -71,5 +74,11 @@ class ComplimentBot
 #    adj = @adjectives.sample
 #    "#{subject} is so #{adj}!"
 #  end
+
+  def you_are_my_fave_c
+    noun = @nouns.sample
+    adj = @adjectives.sample
+    "You are my favorite #{adj} #{noun}."
+  end
 
 end
