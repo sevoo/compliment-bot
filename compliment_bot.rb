@@ -16,27 +16,33 @@ end
 class ComplimentBot
   def initialize
     @nouns = ["accomplishment", "attitude", "avatar", "awoo",
-      "choice", "color", "commentary", "conviction", "creation",
-      "decision", "dinosaur", "elbow",
-      "fashion sense", "favorite",
-      "hand", "intuition", "sense of humor", "kerning",
+      "bravery", "boldness", "charm",
+      "choice", "color", "commentary", "conviction", "creation", "creativity",
+      "decision", "deduction", "dinosaur", "elbow",
+      "fashion sense", "favorite", "gestalt",
+      "hand", "imagination", "ingenuity", "intuition", "sense of humor",
+      "kerning",
       "look", "meow", "mood", "nose", "object permanence",
-      "passion for justice", "protocol", "persona", "quirk", "respect",
+      "passion for justice", "polish", "protocol", "persona", "quirk",
+      "refinement", "respect", "resolution",
       "smile", "sunset", "sincerity", "shoulder",
       "toot", "typography", "unicorn", "walk", "work",
     ]
     @adjectives = ["amazing", "astonishing", "breathtaking", "brave", "bold",
-      "charming", "creative", "cool", "delightful", "distinguished",
-      "elegant", "epic", "ethical", "exquisite", "friendly", "fun", "gracious",
-      "hilarious", "incisive", "inclusive", "inimitable", "lovely", "fetching",
+      "charming", "creative", "cool", "delightful", "decisive", "distinguished",
+      "elegant", "epic", "ethical", "exquisite", "excellent", "exceptional",
+      "friendly", "fun", "gracious", "harmonious", "hilarious",
+      "ideal", "immaculate", "incisive", "inclusive", "inimitable",
+      "kind", "lively", "lovely", "fetching", "fresh",
       "majestic", "my favorite", "nifty",
-      "polished", "pure", "refined", "respectful", "sparkly",
+      "pleasant", "polished", "pure", "refined", "realiable", "respectful",
+      "smooth", "soothing", "solid", "sparkly",
       "spectacular", "spirited", "striking", "stunning", "super", "superb",
-      "unique", "well-maintained", "wonderful", "wondrous"
+      "unique", "vibrant", "warm", "well-maintained", "wonderful", "wondrous"
       ]
       @intensifiers = ["so ", "so ", "so ", "just ", "just ",
         "totally ",  "MEGA-",
-        "", "", "", "", "", "", ""]
+        "", "", "",]
   end
 
   def compliment
@@ -52,13 +58,15 @@ class ComplimentBot
 
   def adj_noun_compliment(subject)
     noun = @nouns.sample
-    adj = @adjectives.sample
+    #avoid "boldness is bold" (imperfectly)
+    adj = noun
+    adj = @adjectives.sample while adj.include?(noun[0...-1])
     "#{subject} #{noun} is #{adj}!"
   end
 
   def you_are_adj_c
     adj = @adjectives.sample
-    intensifier = ["so ", "so ", "totally ", "just ", "", "", "", ""].sample
+    intensifier = @intensifiers.sample
     "You are #{intensifier}#{adj}!"
   end
 
