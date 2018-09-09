@@ -3,42 +3,44 @@ class ComplimentBot
     @nouns = ['accomplishment', 'aesthetic', 'attitude', 'avatar', 'awoo',
       'bravery', 'boldness', 'calculation', 'charm',
       'choice', 'collective', 'color', 'commentary', 'cosmology',
-      'conviction', 'creation', 'creativity',
-      'decision', 'deduction', 'dinosaur', 'elbow',
-      'fashion sense', 'favorite', 'foundation', 'gestalt',
+      'constellation', 'conviction', 'creation', 'creativity',
+      'decision', 'deduction', 'devotion', 'dedication', 'dinosaur', 'elbow',
+      'fashion sense', 'favorite', 'foundation', 'friendliness', 'gestalt',
       'hand', 'hypothesis', 'imagination', 'ingenuity', 'intuition',
-      'kerning', 'look', 'meditation', 'meow', 'method', 'mood',
+      'kerning', 'look', 'loyalty', 'meditation', 'meow', 'method', 'mood',
       'nose', 'passion for justice', 'philosophy', 'polish',
       'praxis', 'protocol', 'persona', 'quirk',
       'refinement', 'respect', 'resolution', 'sense of humor',
-      'smile', 'sunset', 'sincerity', 'shoulder',
+      'smile', 'solidarity', 'sunset', 'sincerity', 'shoulder', 'solidarity',
       'toot', 'typography', 'unicorn', 'variety', 'walk', 'work',
     ]
     @adjectives = ['amazing', 'astonishing', 'awe-inspiring',
-      'breathtaking', 'brave', 'bold',
+      'breathtaking', 'beneficial', 'brave', 'bold',
       'charming', 'creative', 'cool',
       'defined', 'delightful', 'decisive', 'diverse', 'distinguished',
       'enduring', 'elegant', 'epic', 'ethical',
       'exquisite', 'excellent', 'exceptional',
-      'friendly', 'fun', 'gracious', 'harmonious', 'hilarious',
+      'friendly', 'fun', 'gracious', 'harmonious', 'hilarious', 'humane',
       'ideal', 'immaculate', 'incisive', 'inclusive',
       'inimitable', 'interstellar', 'judicious',
       'kind', 'lively', 'lovely', 'fetching', 'fresh', 'grand',
-      'majestic', 'nifty', 'organic',
+      'loyal', 'majestic', 'nifty', 'organic',
       'pleasant', 'polished', 'pragmatic', 'probable', 'pure',
-      'realiable', 'respectful',
+      'reliable', 'respectful',
       'sensible', 'serene', 'smooth', 'soothing', 'solid', 'sparkly',
       'spectacular', 'spirited', 'stellar', 'striking', 'stunning', 'stylish',
-      'super', 'superb', 'thoughtful',
+      'super', 'superb', 'steadfast', 'thoughtful', 'trusty', 'tubular',
       'unique', 'vibrant', 'warm', 'welcoming',
-      'well-maintained', 'wholesome', 'wonderful', 'wondrous',
+      'well-maintained', 'wholesome', 'wise', 'wonderful', 'wondrous',
       ]
-      @intensifiers = ['so ', 'so ', 'so ', 'just ', 'just ',
-        'totally ',  'MEGA-', 'really ', 'super-',
-        '', '', '',]
+
+      @adverbs = ['so ', 'so ', 'so ', 'just ', 'just ',
+        'totally ',  'MEGA-', 'really ', 'courteously ', 'truly ',
+        '', '', '','','','',] #don't adverb everything
 
       @superlatives = ['my favorite', 'the coolest', 'the neatest', 'the best',
-      'a super', ]
+              'a super', ]
+
   end
 
   def compliment
@@ -55,16 +57,10 @@ class ComplimentBot
   end
 
   def adj_noun_compliment(subject)
-    noun = @nouns.sample
-    adj = pick_unlike(noun, @adjectives)
+    adj = @adjectives.sample
+    noun = pick_unlike(adj, @nouns)
 
     "#{subject} #{noun} is #{adj}!"
-  end
-
-  def you_are_adj_c
-    adj = @adjectives.sample
-    intensifier = @intensifiers.sample
-    "You are #{intensifier}#{adj}!"
   end
 
   def love_how_you_are_c
@@ -73,23 +69,29 @@ class ComplimentBot
   end
 
   def you_are_like_c
-    noun = @nouns.sample
-    adj = pick_unlike(noun, @adjectives)
+    adj = @adjectives.sample
+    noun = pick_unlike(adj, @nouns)
     article = 'aAeEiIoOuU'.include?(adj.chars.first) ? 'an' : 'a'
     "You are like #{article} #{adj} #{noun}."
   end
+
+  def you_are_adj_c
+    adj = @adjectives.sample
+    adverb = @adverbs.sample
+    "You are #{adverb}#{adj}!"
+  end
+
+    def you_are_my_fave_c
+      adj = @adjectives.sample
+      noun = pick_unlike(adj, @nouns)
+      sup = @superlatives.sample
+      "You are #{sup} #{adj} #{noun}."
+    end
 
 #  def name_is_adj_compliment(subject)
 #    adj = @adjectives.sample
 #    "#{subject} is so #{adj}!"
 #  end
-
-  def you_are_my_fave_c
-    noun = @nouns.sample
-    adj = pick_unlike(noun, @adjectives)
-    sup = @superlatives.sample
-    "You are #{sup} #{adj} #{noun}."
-  end
 
   def pick_unlike(substring, set)
     #avoid "boldness is bold" and "creativity is creative" (imperfectly)
