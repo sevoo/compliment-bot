@@ -1,5 +1,5 @@
 class DummyClient
   def create_status(msg)
-    puts(msg)
+    puts(Time.now.ctime + " " + msg) 
   end
 end
