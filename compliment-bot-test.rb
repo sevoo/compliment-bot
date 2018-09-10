@@ -24,7 +24,7 @@ class ComplimentBotTest < Minitest::Test
   end
 
   def test_love_how_you_are_c
-    assert @bot.love_how_you_are_c.start_with?("I love how you're")
+    assert @bot.love_how_you_are_c.include?("how you're")
   end
 
   def test_you_are_like_c

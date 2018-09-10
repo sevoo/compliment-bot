@@ -1,36 +1,37 @@
 class ComplimentBot
   def initialize
-    @nouns = ['accomplishment', 'aesthetic', 'attitude', 'avatar', 'awoo',
-      'bravery', 'boldness', 'calculation', 'charm',
-      'choice', 'collective', 'color', 'commentary', 'cosmology',
+    @nouns = ['abundance', 'accomplishment', 'aesthetic',
+      'attitude', 'avatar', 'awoo',
+      'bravery', 'boldness', 'bounty', 'calculation', 'charm',
+      'choice', 'collective', 'commentary', 'cosmology',
       'constellation', 'conviction', 'creation', 'creativity',
       'decision', 'deduction', 'devotion', 'dedication', 'dinosaur', 'elbow',
       'fashion sense', 'favorite', 'foundation', 'friendliness', 'gestalt',
       'hand', 'hypothesis', 'imagination', 'ingenuity', 'intuition',
-      'kerning', 'look', 'loyalty', 'meditation', 'meow', 'method', 'mood',
+      'look', 'loyalty', 'manifestation', 'meditation', 'meow', 'method', 'mood',
       'nose', 'passion for justice', 'philosophy', 'polish',
-      'praxis', 'protocol', 'persona', 'quirk',
+      'praxis', 'protocol', 'persona', 'quirk', 'rawr',
       'refinement', 'respect', 'resolution', 'sense of humor',
       'smile', 'solidarity', 'sunset', 'sincerity', 'shoulder', 'solidarity',
       'toot', 'typography', 'unicorn', 'variety', 'walk', 'work',
     ]
-    @adjectives = ['amazing', 'astonishing', 'awe-inspiring',
-      'breathtaking', 'beneficial', 'brave', 'bold',
+    @adjectives = ['abundant', 'amazing', 'astonishing', 'awe-inspiring',
+      'breathtaking', 'beneficial', 'brave', 'bold', 'buoyant',
       'charming', 'creative', 'cool',
       'defined', 'delightful', 'decisive', 'diverse', 'distinguished',
       'enduring', 'elegant', 'epic', 'ethical',
       'exquisite', 'excellent', 'exceptional',
-      'friendly', 'fun', 'gracious', 'harmonious', 'hilarious', 'humane',
+      'friendly', 'fun', 'gracious', 'hilarious', 'humane',
       'ideal', 'immaculate', 'incisive', 'inclusive',
-      'inimitable', 'interstellar', 'judicious',
+      'inimitable', 'interstellar', 'invigorating', 'judicious',
       'kind', 'lively', 'lovely', 'fetching', 'fresh', 'grand',
-      'loyal', 'majestic', 'nifty', 'organic',
-      'pleasant', 'polished', 'pragmatic', 'probable', 'pure',
-      'reliable', 'respectful',
+      'loyal', 'majestic', 'nifty', 'nurturing', 'organic',
+      'peaceful', 'pleasant', 'polished', 'pragmatic', 'probable', 'pure',
+      'refreshing', 'reliable', 'respectful',
       'sensible', 'serene', 'smooth', 'soothing', 'solid', 'sparkly',
       'spectacular', 'spirited', 'stellar', 'striking', 'stunning', 'stylish',
       'super', 'superb', 'steadfast', 'thoughtful', 'trusty', 'tubular',
-      'unique', 'vibrant', 'warm', 'welcoming',
+      'unique', 'vibrant', 'vital', 'warm', 'welcoming', 'well-informed',
       'well-maintained', 'wholesome', 'wise', 'wonderful', 'wondrous',
       ]
 
@@ -65,7 +66,8 @@ class ComplimentBot
 
   def love_how_you_are_c
     adj = @adjectives.sample
-    "I love how you're #{adj}."
+    verb =['like', 'love', 'appreciate'].sample
+    "I #{verb} how you're #{adj}."
   end
 
   def you_are_like_c
