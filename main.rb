@@ -23,5 +23,5 @@ while true
   client.create_status(bot.compliment)
   # $stderr.puts("posted " + Time.now.ctime)
   # default when online: wait between 3 and 6 hours
-  sleep(rand(3.0)+3*polite_time_period)
+  sleep((rand(3.0)+3)*polite_time_period)
 end
