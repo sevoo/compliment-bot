@@ -5,6 +5,7 @@ require 'mastodon'
 
 require_relative 'dummy-client'
 require_relative 'compliment-bot'
+require_relative 'words'
 
 if BEARER_TOKEN = ENV['CB_BEARER_TOKEN']
   client = Mastodon::REST::Client.new(base_url: "https://botsin.space", bearer_token: BEARER_TOKEN)
@@ -14,7 +15,8 @@ else
   polite_time_period = 5 # you can spam STDOUT every 15-30 seconds
 end
 
-bot = ComplimentBot.new
+words = Words.new
+bot = ComplimentBot.new(words)
 
 # unless the command-line specifies otherwise, wait before posting
 sleep(ARGV.length > 0 ? ARGV[0].to_i : polite_time_period)

@@ -1,53 +1,6 @@
 class ComplimentBot
-  def initialize
-    @nouns = ['abundance', 'accomplishment', 'aesthetic',
-      'attitude', 'avatar', 'awoo',
-      'bravery', 'boldness', 'bounty', 'calculation', 'charm',
-      'choice', 'collective', 'commentary', 'cosmology',
-      'constellation', 'conviction', 'creation', 'creativity',
-      'decision', 'deduction', 'devotion', 'dedication', 'dinosaur', 'elbow',
-      'fashion sense', 'favorite', 'foundation', 'friendliness',
-      'generosity', 'gestalt',
-      'hand', 'hypothesis', 'imagination', 'ingenuity', 'intuition',
-      'kindness', 'look', 'loyalty',
-      'manifestation', 'meditation', 'meow', 'method',
-      'mood', 'nature', 'nose', 'passion for justice', 'philosophy', 'polish',
-      'praxis', 'protocol', 'persona', 'quirk', 'rawr',
-      'refinement', 'respect', 'resolution', 'sense of humor',
-      'smile', 'solidarity', 'sunset', 'sincerity', 'shoulder', 'solidarity',
-      'thoughtfulness', 'toot', 'toy', 'typography', 'unicorn',
-      'variety', 'walk', 'work',
-    ]
-    @adjectives = ['abundant', 'admirable', 'amazing', 'amiable',
-      'astonishing', 'awe-inspiring',
-      'breathtaking', 'beneficial', 'brave', 'breathtaking', 'bold',
-      'buoyant', 'charming', 'creative', 'compassionate', 'cool', 'dazzling',
-      'defined', 'delightful', 'decisive', 'diverse', 'distinguished',
-      'enchanting', 'enduring', 'elegant', 'epic', 'ethical',
-      'exquisite', 'excellent', 'exceptional', 'fantastic', 'fascinating',
-      'friendly', 'fun', 'good', 'gracious', 'heartening', 'hilarious', 'humane',
-      'ideal', 'impressive', 'immaculate', 'incisive', 'inclusive',
-      'inimitable', 'inspiring', 'interstellar', 'invigorating', 'judicious',
-      'kind', 'lively', 'lovely', 'fetching', 'fresh', 'grand',
-      'loyal', 'majestic', 'nifty', 'nurturing', 'organic',
-      'peaceful', 'phenomenal', 'pleasant', 'polished', 'pragmatic',
-      'probable', 'pure', 'refreshing', 'reliable', 'respectful',
-      'sagacious', 'sensational',
-      'sensible', 'serene', 'smooth', 'soothing', 'solid', 'sparkly',
-      'spectacular', 'spellbinding', 'spirited', 'stellar',
-      'striking', 'stunning', 'stylish',
-      'super', 'superb', 'steadfast', 'thoughtful', 'trusty', 'tubular',
-      'unique', 'vibrant', 'vital', 'warm', 'welcoming', 'well-informed',
-      'well-maintained', 'wholesome', 'wise', 'wonderful', 'wondrous',
-      ]
-
-      @adverbs = ['so ', 'so ', 'so ', 'just ', 'just ',
-        'totally ',  'MEGA-', 'really ', 'courteously ', 'truly ',
-        '', '', '','','','',] #don't adverb everything
-
-      @superlatives = ['my favorite', 'the coolest', 'the neatest', 'the best',
-              'a super', ]
-
+  def initialize(words)
+    @words = words
   end
 
   def compliment
@@ -64,35 +17,35 @@ class ComplimentBot
   end
 
   def adj_noun_compliment(subject)
-    adj = @adjectives.sample
-    noun = pick_unlike(adj, @nouns)
+  adj = @words.adjectives.sample
+    noun = pick_unlike(adj, @words.nouns)
 
     "#{subject} #{noun} is #{adj}!"
   end
 
   def love_how_you_are_c
-    adj = @adjectives.sample
+    adj = @words.adjectives.sample
     verb =['like', 'love', 'appreciate'].sample
     "I #{verb} how you're #{adj}."
   end
 
   def you_are_like_c
-    adj = @adjectives.sample
-    noun = pick_unlike(adj, @nouns)
+    adj = @words.adjectives.sample
+    noun = pick_unlike(adj, @words.nouns)
     article = 'aAeEiIoOuU'.include?(adj.chars.first) ? 'an' : 'a'
     "You are like #{article} #{adj} #{noun}."
   end
 
   def you_are_adj_c
-    adj = @adjectives.sample
-    adverb = @adverbs.sample
+    adj = @words.adjectives.sample
+    adverb = @words.adverbs.sample
     "You are #{adverb}#{adj}!"
   end
 
     def you_are_my_fave_c
-      adj = @adjectives.sample
-      noun = pick_unlike(adj, @nouns)
-      sup = @superlatives.sample
+      adj = @words.adjectives.sample
+      noun = pick_unlike(adj, @words.nouns)
+      sup = @words.superlatives.sample
       "You are #{sup} #{adj} #{noun}."
     end
 

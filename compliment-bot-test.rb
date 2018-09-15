@@ -1,10 +1,12 @@
 require 'minitest/autorun'
 
 require_relative 'compliment-bot'
+require_relative 'words'
 
 class ComplimentBotTest < Minitest::Test
   def setup
-    @bot = ComplimentBot.new
+    @words = Words.new
+    @bot = ComplimentBot.new(@words)
   end
 
   def test_compliment
@@ -34,7 +36,5 @@ class ComplimentBotTest < Minitest::Test
   def test_pick_unlike
     assert @bot.pick_unlike('no', ['yes','no']) == 'yes'
   end
-
-
 
 end
