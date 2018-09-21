@@ -21,9 +21,12 @@ bot = ComplimentBot.new(words)
 # unless the command-line specifies otherwise, wait before posting
 sleep(ARGV.length > 0 ? ARGV[0].to_i : polite_time_period)
 
-while true
-  client.create_status(bot.compliment)
-  # $stderr.puts("posted " + Time.now.ctime)
-  # default when online: wait between 3 and 6 hours
-  sleep((rand*3+3)*polite_time_period)
-end
+generic_posting_thread = Thread.new {
+  while true
+    client.create_status(bot.compliment)
+    # default when online: wait between 6 and 12 hours
+    sleep((rand*6+6)*polite_time_period)
+  end
+}
+
+generic_posting_thread.join
